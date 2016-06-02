@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Home</title>
+<link href="css/bootstrap.css" rel="stylesheet" type='text/css' />
+<!-- Custom Theme files -->
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+<!-- Custom Theme files -->
+<script src="js/jquery.min.js"></script>
+<!-- Custom Theme files -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="M" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!--webfont-->
+<link href='http://fonts.useso.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+<script>$(document).ready(function(c) {
+	$('.alert-close').on('click', function(c){
+		$('.calender-left').fadeOut('slow', function(c){
+	  		$('.calender-left').remove();
+		});
+	});	  
+});
+</script>
+<script>$(document).ready(function(c) {
+	$('.alert-close1').on('click', function(c){
+		$('.calender-right').fadeOut('slow', function(c){
+	  		$('.calender-right').remove();
+		});
+	});	  
+});
+</script>
+<script>$(document).ready(function(c) {
+	$('.alert-close2').on('click', function(c){
+		$('.graph').fadeOut('slow', function(c){
+	  		$('.graph').remove();
+		});
+	});	  
+});
+</script>
+<script>$(document).ready(function(c) {
+	$('.alert-close3').on('click', function(c){
+		$('.site-report').fadeOut('slow', function(c){
+	  		$('.site-report').remove();
+		});
+	});	  
+});
+</script>
+<script>$(document).ready(function(c) {
+	$('.alert-close4').on('click', function(c){
+		$('.total-sale').fadeOut('slow', function(c){
+	  		$('.total-sale').remove();
+		});
+	});	  
+});
+</script>
+<script>$(document).ready(function(c) {
+	$('.alert-close5').on('click', function(c){
+		$('.total-sale').fadeOut('slow', function(c){
+	  		$('.total-sale').remove();
+		});
+	});	  
+});
+</script>
+<script>$(document).ready(function(c) {
+	$('.alert-close7').on('click', function(c){
+		$('.user-trends').fadeOut('slow', function(c){
+	  		$('.user-trends').remove();
+		});
+	});	  
+});
+</script>
+<script>$(document).ready(function(c) {
+	$('.alert-close6').on('click', function(c){
+		$('.world-map').fadeOut('slow', function(c){
+	  		$('.world-map').remove();
+		});
+	});	  
+});
+</script>
+
+<script src="js/highcharts.js"></script>
+<script src="js/easyResponsiveTabs.js" type="text/javascript"></script>		  
+<link href="css/nav.css" rel="stylesheet" type="text/css" media="all"/>
+<script src="js/main.js"></script> <!-- Resource jQuery -->
+
+ <script type="text/javascript">
+			    $(document).ready(function () {
+			         $('#horizontalTab,#horizontalTab1,#horizontalTab2').easyResponsiveTabs({
+			            type: 'default', //Types: default, vertical, accordion           
+			            width: 'auto', //auto or any width like 600px
+			            fit: true   // 100% fit in a container
+			        }); 
+			        /*
+			        <div class="men">
+				<div class="grid-men">
+					<a href="#"><img src="images/pp.jpg" class="img-responsive" alt=""> </a>
+				</div>
+				<div class="men-grid">
+					<h6>on <a href="#">Fashion News</a> / by <a href="#">Jolia</a></h6>
+					<span>12-11-2014</span>
+					<p class="text">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.      </p>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+			        
+			        */
+			        var contents='';
+			        $.ajax({
+			     	   url: 'http://localhost:8080/elderly/userController/getAllUsers.do',        
+			     	   dataType: 'json',        
+			     	   type: 'GET',       
+			     	   contentType:'application/json;charset=UTF-8',   		      
+			     	})       		       
+			     	.success(function (datas, status, headers, config) {        		        		        		            
+			     	 	$.each(datas, function(i, data){ 
+			     	 		var pic=data.pic;
+			     	 		if(pic==null)
+			     	 			{pic='images/user/default.png'}
+			     	 		
+			     		contents+='<div class="men"><div class="grid-men">'+
+			     		  '<a href="#"><img src="'+pic+'" height=140px width=140px alt=""> </a></div>'+
+			     		  '<div class="men-grid"><h6><a href="#">'+data.uName+'</a> </h6>'+
+			     		  '<span>'+data.birth+'</span>'+
+			     		  '<p class="text">住址：'+data.uAddress+
+			     		 '。&nbsp&nbsp&nbsp&nbsp个人电话：'+data.uMobile+'</p>'+
+			     		 '<p class="text">子女联系方式：'+data.children+'</p>'+
+			     		  '</div><div class="clearfix"></div></div>'
+			     		}); 
+			     	 	
+			     		$('.top-men').html(contents); 
+			     	})        		           	
+			     	.error(function (data, status, headers, config) {        		                    		            	        		          
+			     	});           
+			        
+			        
+			    });
+			   </script>
+
+
+        
+		
+	<script src="js/zingchart.min.js"></script>
+	<script src="js/zingchart.jquery.js"></script>
+</head>
+<body>
+	<div class="total-content">
+		<div class="col-md-3 side-bar">
+			<div class="logo text-center">
+				<a href="#"><img src="images/logo.png" alt="" /></a>
+			</div>
+			<div class="navigation">
+				<h3>导航</h3>
+				<ul>
+					<li><a href="#"><i class="speed"></i></a></li>
+					<li><a href="#">监控</a></li>
+				</ul>
+				<ul>
+					<li><a href="#"><i class="user"></i></a></li>
+					<li><a href="#">老人</a></li>
+				</ul>
+				<ul>
+					<li><a href="#"><i class="setting"></i></a></li>
+					<li><a href="#">服务</a></li>
+				</ul>
+				
+			</div>
+			
+			<div class="navigation">
+				<h3>其他</h3>
+				<ul>
+					<li><a href="#"><i class="rev"></i></a></li>
+					<li><a href="#">数据</a></li>
+				</ul>
+				<ul>
+					<li><a href="#"><i class="pic"></i></a></li>
+					<li><a href="#">图片</a></li>
+				</ul>
+				<ul>
+					<li><a href="#"><i class="faq"></i></a></li>
+					<li><a href="#">FAQs</a></li>
+				</ul>
+			</div>
+		</div>
+
+
+
+
+		<div class="col-md-9 content">
+			
+				
+			
+			
+				
+			<div class="cd-tabs">
+	<ul class="cd-tabs-content">
+		
+		<div class="top-men">
+			
+		
+			
+		</div>
+
+<div class="clearfix"></div>
+	</ul> 
+</div> 
+
+		</div>
+		<div class="clearfix"></div>
+	</div>
+	<div class="footer">
+			<div class="copyright text-center">
+					<p>Copyright &copy; <a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p>
+			</div>		
+		</div>
+				
+</body>
+</html>
