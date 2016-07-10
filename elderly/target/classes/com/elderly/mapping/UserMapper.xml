@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elderly.dao.UserMapper">
+	<resultMap id="BaseResultMap" type="com.elderly.model.User">
+		<id column="uid" property="uId" jdbcType="INTEGER" />
+		<result column="uname" property="uName" jdbcType="VARCHAR" />
+		<result column="upassword" property="uPassword" jdbcType="VARCHAR" />
+		<result column="umobile" property="uMobile" jdbcType="VARCHAR" />
+    	<result column="uaddress" property="uAddress" jdbcType="VARCHAR" />
+  		<result column="usex" property="uSex" jdbcType="VARCHAR" />
+   	 	<result column="umobile" property="uMobile" jdbcType="VARCHAR" />
+   	 	<result column="children" property="children" jdbcType="VARCHAR" />
+   	 	<result column="ustatus" property="uStatus" jdbcType="VARCHAR" />
+    	<result column="lng" property="lng" jdbcType="VARCHAR" />
+    	<result column="lat" property="lat" jdbcType="VARCHAR" />
+    	<result column="token" property="token" jdbcType="VARCHAR" />
+    	<result column="pic" property="pic" jdbcType="VARCHAR" />
+    	<result column="birth" property="birth" jdbcType="VARCHAR" />
+	</resultMap>
+	 <sql id="Base_Column_List" >
+    uid, uname, uaddress, usex, umobile, upassword, children, ustatus, lng, lat, token, pic,birth
+ 	 </sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from user
+		where uid = #{uId,jdbcType=INTEGER}
+	</select>
+	
+	<select id="getAllUsers" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from user
+	</select>
+	
+	<select id="getEmergencyUsers" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from user
+		where ustatus = 1
+	</select>
+	
+	 <insert id="insertSelective" parameterType="com.elderly.model.User" >
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="uId != null" >
+        uid,
+      </if>
+      <if test="uName != null" >
+        uname,
+      </if>
+      <if test="uAddress != null" >
+        uaddress,
+      </if>
+      <if test="uSex != null" >
+        usex,
+      </if>
+      <if test="uMobile != null" >
+        umobile,
+      </if>
+      <if test="uPassword != null" >
+        upassword,
+      </if>
+      <if test="children != null" >
+        children,
+      </if>
+      <if test="uStatus != null" >
+        ustatus,
+      </if>
+      <if test="lng != null" >
+        lng,
+      </if>
+      <if test="lat != null" >
+        lat,
+      </if>
+      <if test="token != null" >
+        token,
+      </if>
+       <if test="pic != null" >
+        pic,
+      </if>
+        <if test="birth != null" >
+        birth,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="uId != null" >
+        #{uId,jdbcType=INTEGER},
+      </if>
+      <if test="uName != null" >
+        #{uName,jdbcType=VARCHAR},
+      </if>
+      <if test="uAddress != null" >
+        #{uAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="uSex != null" >
+        #{uSex,jdbcType=VARCHAR},
+      </if>
+      <if test="uMobile != null" >
+        #{uMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="uPassword != null" >
+        #{uPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="children != null" >
+        #{children,jdbcType=VARCHAR},
+      </if>
+      <if test="uStatus != null" >
+        #{uStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="lng != null" >
+        #{lng,jdbcType=VARCHAR},
+      </if>
+      <if test="lat != null" >
+        #{lat,jdbcType=VARCHAR},
+      </if>
+      <if test="token != null" >
+        #{token,jdbcType=VARCHAR},
+      </if>
+       <if test="pic != null" >
+        #{pic,jdbcType=VARCHAR},
+      </if>
+       <if test="birth != null" >
+        #{birth,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elderly.model.User" >
+    update user
+    <set >
+      <if test="uName != null" >
+        uname = #{uName,jdbcType=VARCHAR},
+      </if>
+      <if test="uAddress != null" >
+        uaddress = #{uAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="uSex != null" >
+        usex = #{uSex,jdbcType=VARCHAR},
+      </if>
+      <if test="uMobile != null" >
+        umobile = #{uMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="uPassword != null" >
+        upassword = #{uPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="children != null" >
+        children = #{children,jdbcType=VARCHAR},
+      </if>
+      <if test="uStatus != null" >
+        ustatus = #{uStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="lng != null" >
+        lng = #{lng,jdbcType=VARCHAR},
+      </if>
+      <if test="lat != null" >
+        lat = #{lat,jdbcType=VARCHAR},
+      </if>
+      <if test="token != null" >
+        token = #{token,jdbcType=VARCHAR},
+      </if>
+       <if test="pic != null" >
+        pic = #{pic,jdbcType=VARCHAR},
+      </if>
+        <if test="birth != null" >
+        birth = #{birth,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where uid = #{uId,jdbcType=INTEGER}
+  </update>
+	
+	
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from user
+		where uid = #{uId,jdbcType=INTEGER}
+	</delete>
+	
+	
+	
+</mapper>
